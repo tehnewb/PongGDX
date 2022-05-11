@@ -7,6 +7,13 @@ project.ext.assetsDir = new File("../assets")
 
 import org.gradle.internal.os.OperatingSystem
 
+apply plugin: 'edu.sc.seis.launch4j'
+
+
+launch4j {
+	mainClassName = project.ext.mainClassName
+}
+
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
@@ -40,6 +47,7 @@ task dist(type: Jar) {
     }
     with jar
 }
+
 
 
 dist.dependsOn classes
